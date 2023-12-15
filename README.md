@@ -10,40 +10,60 @@ https://strommeninc.com/1000-most-common-spanish-words-frequency-vocabulary/
 
 
 ### The purpose of this project
-The purpose of this project was to create something I can use to learned spanish words as well as to learn
+The primary objective was to create something I can use to learned spanish words as well as to learn
 and practice my programming skills in the process.
 
-SQL queries have been practiced.
+- SQL queries have been practiced.
 
-A decorator was created to check for SQL errors.
+- A decorator was created to check for SQL errors.
 
-Tkinter has been practiced.
+- Tkinter has been practiced.
 
+### How it Works
 
-### How does it work
-First you choose the category of words. The number in parentheses indicates how many words there are left to learn.
-Categories and the numbers of not learned words are fetched from database.
-You can reset the progress if needed. Press "Continue" to go to the next screen. Press ❌ or ✅︎ button to start.
+1. **Word Selection:**
+   - Choose a category of words.
+   - Categories and the number of remaining words to learn are fetched from the database.
+   - Reset the progress if needed.
+   - Press "Continue" to move to the next screen.
 
-The next word is selected randomly from the list created by fetching words from the database from the chosen category
-that are marked as not learned.
+2. **Learning Process:**
+   - The next word is randomly selected from the chosen category, marked as not learned.
+   - The word is pronounced in Spanish.
+   - After a set time (controlled by the TIMER constant in `window.py`), the back of the card is shown.
+   - The word is then pronounced in English.
 
-The word is pronounced in Spanish and after indicated time by TIMER constance in window.py the back of card is shown
-and the word is pronounced in English.
+   **Note:**
+   - Pronunciation functionality using `os.system("say -v ...")` is specific to macOS.
+   - If you are using a different operating system, you may need to modify the pronunciation functionality.
 
-You press ❌ or ✅︎ button to not mark or to mark the word as learned and the next word is shown.
+3. **Interaction:**
+   - Press ❌ or ✅︎ buttons to mark the word as not learned or learned, respectively.
+   - The next word in the list is displayed.
 
-
-### Encountered issues
-After adding pronunciation of words it became possible to crash the app by pressing learned / not learned buttons
+### Encountered Issues and Solution
+Issue:
+- After adding pronunciation of words it became possible to crash the app by pressing learned / not learned buttons
 too fast.
 
 Solution:
 
-Buttons are disabled before:
+- Buttons are disabled before next card is drawn and a word is pronounced and before
+card back is shown and a word is pronounced.
 
-* next card is drawn and a word is pronounced,
+- Buttons are re-enabled after word is pronounced.
 
-* card_back is shown and a word is pronounced.
+### Dependencies
 
-Buttons are enabled after word is pronounced.
+- Python 3.7+
+
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rafald1/flashcards.git
+   cd flashcards
+
+2. Run the application:
+   ```bash
+    python main.py
